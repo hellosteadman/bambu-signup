@@ -4,7 +4,7 @@ from os import path
 
 setup(
     name = 'bambu-signup',
-    version = '2.0',
+    version = '2.0.1',
     description = 'A fluid signup method for free web apps',
     author = 'Steadman',
     author_email = 'mark@steadman.io',

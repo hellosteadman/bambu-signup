@@ -4,6 +4,10 @@ from bambu_mail import render_to_mail
 from uuid import uuid4
 import random, string
 
+class CustomTitleString(str):
+    def title(self):
+        return str(self[6:]).title()
+
 class EmailValidation(models.Model):
     user = models.ForeignKey('auth.User', related_name = 'email_validations', unique = True)
     next_url = models.CharField(max_length = 200, null = True, blank = True)
@@ -46,6 +50,7 @@ class EmailValidation(models.Model):
         ordering = ('-sent',)
         get_latest_by = 'sent'
         db_table = 'signup_emailvalidation'
+        app_label = CustomTitleString('bambu_signup')
 
 class PasswordReset(models.Model):
     user = models.ForeignKey(User, related_name = 'password_resets', unique = True)
@@ -98,3 +103,4 @@ class PasswordReset(models.Model):
         ordering = ('-sent',)
         get_latest_by = 'sent'
         db_table = 'signup_passwordreset'
+        app_label = CustomTitleString('bambu_signup')
